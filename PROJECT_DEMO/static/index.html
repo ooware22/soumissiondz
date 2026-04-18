@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SOUMISSION.DZ</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+
+<header id="topbar" hidden>
+  <div class="brand">SOUMISSION.DZ</div>
+  <nav>
+    <a href="#dashboard" data-route="dashboard">Tableau de bord</a>
+    <a href="#coffre"    data-route="coffre">Coffre-fort</a>
+    <a href="#refs"      data-route="refs">References</a>
+    <a href="#ao"        data-route="ao">AO</a>
+    <a href="#chiffrage" data-route="chiffrage">Chiffrage</a>
+    <a href="#dossiers"  data-route="dossiers">Dossiers</a>
+    <a href="#assistance" data-route="assistance">Assistance</a>
+    <a href="#facturation" data-route="facturation">Facturation</a>
+  </nav>
+  <div class="user-info">
+    <span id="user-label"></span>
+    <button id="btn-logout" class="link">Deconnexion</button>
+  </div>
+</header>
+
+<main id="app">
+  <section id="view-login">
+    <div class="card center">
+      <h1>SOUMISSION.DZ</h1>
+      <p class="muted">Plateforme SaaS — Marches publics algeriens</p>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Connexion</button>
+        <button class="tab" data-tab="signup-ent">Nouvelle entreprise</button>
+        <button class="tab" data-tab="signup-cab">Nouveau cabinet</button>
+      </div>
+
+      <form id="form-login" class="tab-content active">
+        <label>Email <input type="email" name="email" required value="brahim@alpha-btph.dz"></label>
+        <label>Mot de passe <input type="password" name="password" required value="Demo12345"></label>
+        <button type="submit" class="btn-primary">Se connecter</button>
+      </form>
+
+      <form id="form-signup-ent" class="tab-content" hidden>
+        <label>Nom de l'entreprise <input name="nom_entreprise" required minlength="2"></label>
+        <label>Forme juridique
+          <select name="forme_juridique">
+            <option value="">—</option>
+            <option>SARL</option><option>SPA</option><option>EURL</option>
+            <option>SNC</option><option>ETI</option><option>AUTO-ENTREPRENEUR</option>
+          </select>
+        </label>
+        <label>Email <input type="email" name="email" required></label>
+        <label>Nom d'utilisateur <input name="username" required minlength="2"></label>
+        <label>Mot de passe (8 car. min) <input type="password" name="password" required minlength="8"></label>
+        <label>Telephone <input name="telephone"></label>
+        <button type="submit" class="btn-primary">Creer mon compte</button>
+      </form>
+
+      <form id="form-signup-cab" class="tab-content" hidden>
+        <label>Nom du cabinet <input name="nom_cabinet" required minlength="2"></label>
+        <label>Consultant principal <input name="consultant_principal" required minlength="2"></label>
+        <label>Email <input type="email" name="email" required></label>
+        <label>Nom d'utilisateur <input name="username" required minlength="2"></label>
+        <label>Mot de passe (8 car. min) <input type="password" name="password" required minlength="8"></label>
+        <button type="submit" class="btn-primary">Creer le cabinet</button>
+      </form>
+
+      <div id="login-error" class="error" hidden></div>
+      <p class="muted small">Demo apres bootstrap : brahim@alpha-btph.dz / Demo12345</p>
+    </div>
+  </section>
+
+  <section id="view-dashboard" hidden>
+    <h1>Tableau de bord</h1>
+    <div id="dashboard-content"></div>
+  </section>
+
+  <section id="view-coffre" hidden>
+    <h1>Coffre-fort documentaire</h1>
+    <div id="coffre-content"></div>
+  </section>
+
+  <section id="view-refs" hidden>
+    <h1>References de marches</h1>
+    <div id="refs-content"></div>
+  </section>
+
+  <section id="view-ao" hidden>
+    <h1>Appels d'offres</h1>
+    <div id="ao-content"></div>
+  </section>
+
+  <section id="view-dossiers" hidden>
+    <h1>Kanban des dossiers</h1>
+    <div id="dossiers-content"></div>
+  </section>
+
+  <section id="view-chiffrage" hidden>
+    <h1>Chiffrage — Catalogue, Simulateur, Templates</h1>
+    <div id="chiffrage-content"></div>
+  </section>
+
+  <section id="view-assistance" hidden>
+    <h1>Assistance — Prestations et Missions</h1>
+    <div id="assistance-content"></div>
+  </section>
+
+  <section id="view-facturation" hidden>
+    <h1>Facturation</h1>
+    <div id="facturation-content"></div>
+  </section>
+</main>
+
+<div id="toast" hidden></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+# -*- coding: utf-8 -*-
+"""Package schémas Pydantic."""
+from app.schemas.auth import LoginIn, MeOut, TokenOut
+from app.schemas.common import BaseSchema, MessageOut
+from app.schemas.metier import (
+    AlerteDocOut,
+    AoImportResult,
+    AoIn,
+    AoOut,
+    AuditOut,
+    DocumentOut,
+    DocumentTypeOut,
+    DocumentUpdateIn,
+    PosteChiffre,
+    PosteIn,
+    PosteSimule,
+    PrixArticleOut,
+    ReferenceIn,
+    ReferenceOut,
+    RuleResultOut,
+    SimulationIn,
+    SimulationOut,
+    TemplateChiffreIn,
+    TemplateChiffreOut,
+    TemplateOut,
+)
+from app.schemas.phase3 import (
+    CabinetEntrepriseAvecIndicateurs,
+    CabinetEntrepriseIn,
+    CabinetEntrepriseOut,
+    CautionAlerte,
+    CautionIn,
+    CautionOut,
+    CautionsResume,
+    ComparateurEntreprise,
+    ComparateurOut,
+    DossierIn,
+    DossierOut,
+    DossierUpdate,
+    KanbanColonne,
+    KanbanOut,
+    SoumissionIn,
+    SoumissionOut,
+)
+from app.schemas.phase4 import (
+    AbonnementOut,
+    AbonnementSouscrireIn,
+    ActionMandatOut,
+    AssistantInscriptionIn,
+    AssistantOut,
+    CodeParrainageOut,
+    CommissionOut,
+    FactureOut,
+    MandatOut,
+    MandatSignatureIn,
+    MessageIn,
+    MessageOut2,
+    MissionContestationIn,
+    MissionDemandeIn,
+    MissionLivraisonIn,
+    MissionOut,
+    MissionValidationIn,
+    PlanOut,
+    PrestationOut,
+    TicketIn,
+    TicketOut,
+    TicketReponseIn,
+)
+from app.schemas.signup import SignupCabinetIn, SignupEntrepriseIn, SignupOut
+from app.schemas.team import TeamInviteIn, TeamMemberOut
+
+__all__ = [
+    "BaseSchema",
+    "MessageOut",
+    "LoginIn",
+    "TokenOut",
+    "MeOut",
+    "SignupEntrepriseIn",
+    "SignupCabinetIn",
+    "SignupOut",
+    "TeamInviteIn",
+    "TeamMemberOut",
+]
