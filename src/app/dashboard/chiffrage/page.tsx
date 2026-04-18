@@ -18,7 +18,7 @@ export default function ChiffragePage() {
   const [simulating, setSimulating] = useState(false);
   const [tplCode, setTplCode] = useState("");
   const [tplBudget, setTplBudget] = useState("");
-  const [tplResult, setTplResult] = useState<unknown>(null);
+  const [tplResult, setTplResult] = useState<any>(null);
   const [chiffrant, setChiffrant] = useState(false);
 
   useEffect(() => {
