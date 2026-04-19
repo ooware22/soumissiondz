@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Zap, Shield, Clock, BarChart3, FileText, ArrowRight, CheckCircle2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const FEATURES = [
   { icon: Shield, title: "Coffre-fort", desc: "15 types de documents officiels, alertes d'expiration automatiques" },
@@ -9,10 +10,12 @@ const FEATURES = [
 ];
 
 const PLANS = [
-  { name: "Artisan", price: "5 000", target: "TPE solo" },
-  { name: "Pro", price: "10 000", target: "PME 5-30", popular: true },
-  { name: "Business", price: "15 000", target: "PME 30+" },
-  { name: "Expert", price: "20 000", target: "Cabinets" },
+  { name: "DÉCOUVERTE", price: "Gratuit", suffix: "(14 j)", target: "Test de la plateforme", highlight: false },
+  { name: "ARTISAN", price: "5 000", suffix: "DA/mois", target: "TPE solo", highlight: false },
+  { name: "PRO", price: "10 000", suffix: "DA/mois", target: "PME 5–30 employés", highlight: true },
+  { name: "BUSINESS", price: "15 000", suffix: "DA/mois", target: "PME 30+, multi-utilisateurs", highlight: false },
+  { name: "EXPERT", price: "20 000", suffix: "DA/mois", target: "Consultants multi-clients (Cas 2)", highlight: false },
+  { name: "HOTLINE", price: "4 000", suffix: "DA/mois", target: "Add-on support (tous plans)", highlight: false },
 ];
 
 export default function Home() {
@@ -44,29 +47,29 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative z-10 mx-auto max-w-4xl px-6 pt-20 pb-24 text-center lg:pt-32 lg:pb-32">
-        <div className="animate-fade-in">
-
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-            <span className="bg-gradient-to-r from-foreground via-foreground to-muted bg-clip-text">
-              Préparez vos dossiers
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-accent via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              sans erreur
+      <section className="relative z-10 mx-auto max-w-5xl px-6 pt-24 pb-24 text-center lg:pt-36 lg:pb-36">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent/20 blur-[120px] rounded-full pointer-events-none" />
+        
+        <div className="animate-fade-in relative z-10">
+          <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
+            Remportez plus de marchés, <br className="hidden sm:block" />
+            <span className="bg-gradient-to-r from-accent via-indigo-400 to-purple-400 bg-clip-text text-transparent drop-shadow-sm">
+              avec zéro erreur de forme
             </span>
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-muted leading-relaxed">
-            Plateforme SaaS pour les marchés publics algériens. 
-            Importez un AO, auditez en 25 règles, générez le mémoire - déposez sereinement.
+          
+          <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed sm:text-xl">
+            La première plateforme SaaS dédiée aux marchés publics algériens. 
+            Importez vos cahiers des charges, auditez votre dossier en 25 règles et générez votre offre en un clic.
           </p>
-          <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link href="/signup/entreprise" className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/20 active:scale-[0.98] sm:w-auto">
-              Essai gratuit 14 jours
-              <ArrowRight className="h-4 w-4" />
+          
+          <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Link href="/signup/entreprise" className="group relative flex w-full items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 text-sm font-bold text-white transition-all hover:bg-accent-hover hover:shadow-[0_0_40px_8px_rgba(var(--accent),0.3)] hover:-translate-y-0.5 active:scale-[0.98] sm:w-auto">
+              Démarrer l'essai gratuit
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link href="/login" className="flex w-full items-center justify-center rounded-xl border border-border bg-card px-6 py-3 text-sm font-medium text-muted transition-all hover:text-foreground hover:border-border-hover sm:w-auto">
-              Voir la démo
+            <Link href="/login" className="flex w-full items-center justify-center rounded-full border border-border bg-surface/50 px-8 py-4 text-sm font-semibold text-foreground backdrop-blur-sm transition-all hover:bg-card-hover hover:border-border-hover sm:w-auto">
+              Voir la démo interactive
             </Link>
           </div>
         </div>
@@ -88,19 +91,63 @@ export default function Home() {
       </section>
 
       {/* Pricing preview */}
-      <section className="relative z-10 mx-auto max-w-4xl px-6 pb-24 text-center">
-        <h2 className="text-2xl font-semibold tracking-tight">Tarifs simples, en DA</h2>
-        <p className="mt-2 text-sm text-muted">Pas de frais cachés. Annulation à tout moment.</p>
-        <div className="stagger mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="relative z-10 mx-auto max-w-6xl px-6 pb-24 text-center">
+        <h2 className="text-3xl font-bold tracking-tight">Des tarifs adaptés à votre structure</h2>
+        <p className="mt-3 text-base text-muted-foreground">Une tarification transparente, sans frais cachés et sans engagement de durée.</p>
+        
+        <div className="stagger mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PLANS.map((p) => (
-            <div key={p.name} className={`rounded-2xl border p-6 text-left transition-all hover:border-border-hover ${p.popular ? "border-accent/30 bg-accent-muted glow-accent" : "border-border bg-card"}`}>
-              {p.popular && <span className="mb-3 inline-block rounded-full bg-accent/20 px-2 py-0.5 text-xs font-medium text-accent">Populaire</span>}
-              <h3 className="text-sm font-semibold">{p.name}</h3>
-              <p className="mt-2"><span className="text-2xl font-bold">{p.price}</span><span className="text-sm text-muted"> DA/mois</span></p>
-              <p className="mt-1 text-xs text-muted-foreground">{p.target}</p>
+            <div 
+              key={p.name} 
+              className={cn(
+                "relative flex flex-col rounded-3xl border p-8 text-left transition-all duration-300",
+                p.highlight 
+                  ? "border-accent/50 bg-surface shadow-[0_0_30px_rgba(var(--accent),0.15)] scale-105 z-10" 
+                  : "border-border bg-card hover:border-border-hover hover:bg-card-hover"
+              )}
+            >
+              {p.highlight && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className="rounded-full bg-accent px-4 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-lg">
+                    Le plus populaire
+                  </span>
+                </div>
+              )}
+              <h3 className={cn("text-sm font-bold tracking-wider", p.highlight ? "text-accent" : "text-muted-foreground")}>
+                {p.name}
+              </h3>
+              <div className="mt-4 flex items-baseline gap-2">
+                <span className="text-4xl font-extrabold tracking-tight text-foreground">{p.price}</span>
+                <span className="text-sm font-medium text-muted-foreground">{p.suffix}</span>
+              </div>
+              <p className="mt-4 text-sm text-muted-foreground pb-6 border-b border-border/50">
+                {p.target}
+              </p>
+              
+              <div className="mt-6 flex-1">
+                {/* Visual placeholder for features list */}
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-3 text-sm text-muted"><CheckCircle2 className="h-4 w-4 text-accent" /> Accès coffre-fort</li>
+                  <li className="flex items-center gap-3 text-sm text-muted"><CheckCircle2 className="h-4 w-4 text-accent" /> Audit 25 règles</li>
+                  <li className="flex items-center gap-3 text-sm text-muted"><CheckCircle2 className="h-4 w-4 text-accent" /> Chiffrage & Simulation</li>
+                </ul>
+              </div>
+              
+              <button className={cn(
+                "mt-8 w-full rounded-xl py-3 text-sm font-bold transition-all",
+                p.highlight 
+                  ? "bg-accent text-white hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/25" 
+                  : "bg-surface border border-border text-foreground hover:bg-card hover:border-border-hover"
+              )}>
+                Choisir ce plan
+              </button>
             </div>
           ))}
         </div>
+        
+        <p className="mt-10 text-sm text-muted-foreground">
+          Complément : <strong>Mode à l'acte 5 000 DA/dossier</strong>. Service d'assistance déléguée à partir de 8 000 DA.
+        </p>
       </section>
 
       {/* Footer */}

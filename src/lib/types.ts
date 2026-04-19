@@ -230,12 +230,7 @@ export interface Dossier {
   created_at: string;
 }
 
-export interface KanbanData {
-  a_faire: Dossier[];
-  en_cours: Dossier[];
-  a_valider: Dossier[];
-  termine: Dossier[];
-}
+export type KanbanData = Record<string, Dossier[]>;
 
 // ---------- Assistance ----------
 export interface Prestation {
