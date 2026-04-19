@@ -175,22 +175,34 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* Demo hint */}
+        {/* Demo Accounts */}
         <div className="mt-8 rounded-xl border border-border bg-card/50 p-4">
-          <p className="text-xs text-muted-foreground text-center">
-            Démo :{" "}
-            <button
-              type="button"
-              onClick={() => {
-                setEmail("brahim@alpha-btph.dz");
-                setPassword("Demo12345");
-              }}
-              className="text-accent hover:text-accent-hover transition-colors font-medium"
-            >
-              brahim@alpha-btph.dz
-            </button>{" "}
-            / Demo12345
-          </p>
+          <p className="text-xs font-semibold text-muted-foreground mb-3">Comptes de test (cliquez pour remplir) :</p>
+          <div className="grid grid-cols-2 gap-2">
+            {[
+              { role: "Patron", email: "patron@alpha-btph.dz", pass: "Demo12345" },
+              { role: "Validateur", email: "validateur@alpha-btph.dz", pass: "Demo12345" },
+              { role: "Chef Dossier", email: "chef_dossier@alpha-btph.dz", pass: "Demo12345" },
+              { role: "Auditeur", email: "auditeur@alpha-btph.dz", pass: "Demo12345" },
+              { role: "Préparateur", email: "preparateur@alpha-btph.dz", pass: "Demo12345" },
+              { role: "Lecteur", email: "lecteur@alpha-btph.dz", pass: "Demo12345" },
+              { role: "Consultant (Cas 2)", email: "consultant@cabinet.dz", pass: "Demo12345" },
+              { role: "Admin", email: "admin@soumission.dz", pass: "Admin12345" }
+            ].map(acc => (
+              <button
+                key={acc.email}
+                type="button"
+                onClick={() => {
+                  setEmail(acc.email);
+                  setPassword(acc.pass);
+                }}
+                className="text-left text-[11px] p-2 rounded bg-surface border border-border hover:border-accent hover:text-accent transition-all"
+              >
+                <span className="block font-bold mb-0.5">{acc.role}</span>
+                <span className="block text-muted-foreground truncate">{acc.email}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>

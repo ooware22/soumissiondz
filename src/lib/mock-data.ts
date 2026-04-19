@@ -12,21 +12,46 @@ import type {
 
 // ---------- Users ----------
 export const MOCK_USERS: Record<string, { password: string; me: MeResponse }> = {
-  "brahim@alpha-btph.dz": {
+  // --- Rôles Décisionnels & Globaux ---
+  "patron@alpha-btph.dz": {
     password: "Demo12345",
-    me: { id: 1, email: "brahim@alpha-btph.dz", username: "Brahim", role: "PATRON", organisation_id: 1, organisation_nom: "Alpha BTPH", organisation_type: "ENTREPRISE", plan_code: "PRO" },
+    me: { id: 1, email: "patron@alpha-btph.dz", username: "Brahim (Patron)", role: "PATRON", organisation_id: 1, organisation_nom: "Alpha BTPH", organisation_type: "ENTREPRISE", plan_code: "PRO" },
   },
-  "kamel@batipro-setif.dz": {
+  "validateur@alpha-btph.dz": {
     password: "Demo12345",
-    me: { id: 2, email: "kamel@batipro-setif.dz", username: "Kamel", role: "PATRON", organisation_id: 2, organisation_nom: "Batipro Sétif", organisation_type: "ENTREPRISE", plan_code: "BUSINESS" },
+    me: { id: 5, email: "validateur@alpha-btph.dz", username: "Karim (Validateur)", role: "VALIDATEUR", organisation_id: 1, organisation_nom: "Alpha BTPH", organisation_type: "ENTREPRISE", plan_code: "PRO" },
   },
-  "mourad@cabinet-mourad.dz": {
+
+  // --- Rôles Opérationnels (Cas 1) ---
+  "chef_dossier@alpha-btph.dz": {
     password: "Demo12345",
-    me: { id: 3, email: "mourad@cabinet-mourad.dz", username: "Mourad", role: "CONSULTANT", organisation_id: 3, organisation_nom: "Cabinet Mourad Conseils", organisation_type: "CABINET", plan_code: "EXPERT", cabinet_id: 1 },
+    me: { id: 6, email: "chef_dossier@alpha-btph.dz", username: "Sara (Chef Dossier)", role: "CHEF_DOSSIER", organisation_id: 1, organisation_nom: "Alpha BTPH", organisation_type: "ENTREPRISE", plan_code: "PRO" },
+  },
+  "auditeur@alpha-btph.dz": {
+    password: "Demo12345",
+    me: { id: 7, email: "auditeur@alpha-btph.dz", username: "Yassine (Auditeur)", role: "AUDITEUR", organisation_id: 1, organisation_nom: "Alpha BTPH", organisation_type: "ENTREPRISE", plan_code: "PRO" },
+  },
+  "preparateur@alpha-btph.dz": {
+    password: "Demo12345",
+    me: { id: 8, email: "preparateur@alpha-btph.dz", username: "Amira (Préparateur)", role: "PREPARATEUR", organisation_id: 1, organisation_nom: "Alpha BTPH", organisation_type: "ENTREPRISE", plan_code: "PRO" },
+  },
+  "lecteur@alpha-btph.dz": {
+    password: "Demo12345",
+    me: { id: 9, email: "lecteur@alpha-btph.dz", username: "Comptable (Lecteur)", role: "LECTEUR", organisation_id: 1, organisation_nom: "Alpha BTPH", organisation_type: "ENTREPRISE", plan_code: "PRO" },
+  },
+
+  // --- Rôles Externes & Plateforme (Cas 2 & 3) ---
+  "consultant@cabinet.dz": {
+    password: "Demo12345",
+    me: { id: 3, email: "consultant@cabinet.dz", username: "Mourad (Consultant)", role: "CONSULTANT", organisation_id: 3, organisation_nom: "Cabinet Mourad Conseils", organisation_type: "CABINET", plan_code: "EXPERT", cabinet_id: 1 },
+  },
+  "expert@soumission.dz": {
+    password: "Demo12345",
+    me: { id: 10, email: "expert@soumission.dz", username: "Expert (Assistance)", role: "ASSISTANT_AGREE", organisation_id: 4, organisation_nom: "Soumission DZ", organisation_type: "ENTREPRISE", plan_code: "EXPERT" },
   },
   "admin@soumission.dz": {
     password: "Admin12345",
-    me: { id: 4, email: "admin@soumission.dz", username: "Admin", role: "ADMIN_PLATEFORME", organisation_id: 4, organisation_nom: "Soumission DZ", organisation_type: "ENTREPRISE", plan_code: "EXPERT" },
+    me: { id: 4, email: "admin@soumission.dz", username: "Admin (Plateforme)", role: "ADMIN_PLATEFORME", organisation_id: 4, organisation_nom: "Soumission DZ", organisation_type: "ENTREPRISE", plan_code: "EXPERT" },
   },
 };
 

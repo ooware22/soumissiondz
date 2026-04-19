@@ -127,7 +127,47 @@ export default function DashboardLayout({
 
         {/* Nav links */}
         <nav className="flex-1 overflow-y-auto p-2 space-y-0.5">
-          {NAV_ITEMS.map((item) => {
+          {NAV_ITEMS.filter(item => {
+            if (!user) return false;
+            
+            // ADMIN_PLATEFORME
+            if (user.role === "ADMIN_PLATEFORME") {
+              return ["Administration", "Tableau de bord"].includes(item.label);
+            }
+            
+            // ASSISTANT_AGREE
+            if (user.role === "ASSISTANT_AGREE") {
+              return ["Assistance", "Tableau de bord"].includes(item.label);
+            }
+
+            // PATRON
+            if (user.role === "PATRON") {
+              if (item.label === "Administration") return false;
+              if (item.label === "Portefeuille" && user.organisation_type !== "CABINET") return false;
+              return true;
+            }
+
+            // CONSULTANT (CABINET)
+            if (user.role === "CONSULTANT") {
+              return ["Tableau de bord", "Portefeuille", "Dossiers", "AO", "Coffre-fort"].includes(item.label);
+            }
+
+            // AUDITEUR
+            if (user.role === "AUDITEUR") {
+              return ["Tableau de bord", "Appels d'offres", "Dossiers"].includes(item.label);
+            }
+
+            // PREPARATEUR
+            if (user.role === "PREPARATEUR") {
+              const hidden = ["Facturation", "Équipe", "Chiffrage", "Administration", "Portefeuille"];
+              return !hidden.includes(item.label);
+            }
+
+            // Default fallback for CHEF_DOSSIER, VALIDATEUR, LECTEUR
+            const hidden = ["Facturation", "Administration", "Portefeuille"];
+            return !hidden.includes(item.label);
+            
+          }).map((item) => {
             const active = isActive(item.href);
             return (
               <Link
